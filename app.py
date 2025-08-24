@@ -1,14 +1,14 @@
 from flask import Flask, render_template, request, redirect, url_for
 from werkzeug.utils import secure_filename
 import os
-import tensorflow as tf
 import numpy as np
 from PIL import Image
+import keras
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = 'static/uploads'
 
-model = tf.keras.models.load_model('asl_model.h5')
+model = keras.models.load_model('asl_model.h5')
 class_labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M',
                 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', 'DEL', 'NOTHING', 'SPACE']
 IMG_SIZE = 64
